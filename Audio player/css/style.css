@@ -1,0 +1,181 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #98817b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: "Playfair";
+  src: url("../fonts/PlayfairDisplay-Regular.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+.audio-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  width: 500px;
+  overflow: visible;
+  z-index: 1;
+  transition: transform 0.9s ease;
+  perspective: 900px;
+}
+
+.audio-card.move-right {
+  transform: translateX(min(38vw, 700px)) scale(0.8);
+}
+
+.audio-player {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  border: 3px solid #74635f;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  background-color: #f1f3f4;
+}
+
+.audio-card-title {
+  width: 100%;
+  height: 54px;
+  bottom: -51px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Playfair", serif;
+  font-weight: 900;
+  font-size: 26px;
+  border: 3px solid #74635f;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: #c9bbb7;
+  box-shadow: 10px 10px 10px #5c4d49
+}
+
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  filter: blur(8px) brightness(0.6);
+  transform: scale(1);
+  transition:
+    filter 0.9s ease,
+    transform 1.1s ease;
+}
+
+.video-active {
+  filter: blur(0px) brightness(1);
+  transform: scale(1.12);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.audio-card-cover {
+  position: relative;
+  max-width: 500px;
+  border: 3px solid #98817b;
+  border-radius: 50%;
+  font-size: 0;
+  box-shadow:
+    0 0 25px rgba(92, 77, 73, 0.35),
+    0 0 60px rgba(92, 77, 73, 0.25),
+    0 0 120px rgba(92, 77, 73, 0.15),
+    0 30px 60px rgba(0, 0, 0, 0.7),
+    0 10px 20px rgba(0, 0, 0, 0.5);
+  will-change: transform;
+}
+
+.audio-card-cover.playing {
+  box-shadow:
+    0 0 35px rgba(92, 77, 73, 0.5),
+    0 0 80px rgba(92, 77, 73, 0.35),
+    0 0 160px rgba(92, 77, 73, 0.25),
+    0 30px 60px rgba(0, 0, 0, 0.7),
+    0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.audio-card-cover::before {
+  width: 80px;
+  height: 80px;
+  content: "";
+  position: absolute;
+  background: #5c4d49;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  box-shadow:
+    inset 0 0 10px rgba(0, 0, 0, 0.8),
+    0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.audio-card-cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at var(--light-x, 50%) var(--light-y, 50%),
+      rgba(255, 255, 255, 0.2) 0%,
+      rgba(255, 255, 255, 0.1) 6%,
+      rgba(255, 255, 255, 0.05) 12%,
+      rgba(255, 255, 255, 0.015) 18%,
+      rgba(255, 255, 255, 0.008) 28%,
+      transparent 45%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.audio-card-cover img {
+  display: block;
+  width: 100%;
+  border-radius: 50%;
+  position: relative;
+  z-index: 1;
+  filter: contrast(1.1) brightness(0.95);
+}

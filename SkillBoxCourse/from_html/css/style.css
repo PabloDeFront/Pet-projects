@@ -1,0 +1,122 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+body {
+  font-family: Arial, Verdana, sans-serif;
+}
+
+.container {
+  width: 1170px;
+  margin: 0 auto;
+}
+
+img {
+  max-width: 100%;
+}
+
+.main-title {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  color: #3f2aff;
+  font-size: 60px;
+}
+
+.text {
+  margin: 0;
+  margin-bottom: 30px;
+  max-width: 730px;
+  font-size: 20px;
+  line-height: 160%;
+  color: #333
+}
+
+.text:last-child {
+  margin-bottom: 0;
+}
+
+.text a {
+  color: #3f2aff;
+  text-decoration: none;
+}
+
+.quote-text {
+  background-color: #ebebeb;
+  max-width: 900px;
+  padding: 25px 120px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.quote {
+  font-weight: 700;
+}
+
+.quote-author {
+  font-style: normal;
+}
+
+.image-group {
+  margin: 0;
+  margin-bottom: 60px;
+  width: 100%;
+}
+
+.image-group-text {
+  padding: 12px;
+  background-color: #3f2aff ;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.second-title {
+  margin: 0;
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 40px;
+}
+
+.list {
+  margin: 20px 0;
+  padding-left: 40px;
+  font-size: 20px;
+  line-height: 48px;
+}
+
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 60px;
+ }
+
+ /* border-collapse: collapse; - схлопывание border, как margin */
+
+.table-caption {
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-size: 20px;
+  text-align: left;
+}
+
+.table-cell {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  font-size: 20px;
+  padding: 30px;
+  vertical-align: top;
+  text-align: left;
+}
+
+.table-header {
+  color:#3f2aff;
+  font-weight: bold;
+}
+/* vertical-align: - центрирование по вертикали */
