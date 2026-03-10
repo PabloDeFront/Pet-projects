@@ -19,7 +19,7 @@ img {
 
 @font-face {
   font-family: "OpenSans";
-  src: local("OpenSans-Regular"), 
+  src: local("OpenSans-Regular"),
     url("../fonts/OpenSansRegular.woff2"), format("woff2"),
     url("../fonts/OpenSansRegular.woff"), format("woff");
   font-weight: 400;
@@ -29,7 +29,7 @@ img {
 
 @font-face {
   font-family: "OpenSans";
-  src: local("OpenSans-Light"), 
+  src: local("OpenSans-Light"),
     url("../fonts/OpenSansLight.woff2"), format("woff2"),
     url("../fonts/OpenSansLight.woff"), format("woff");
   font-weight: 300;
@@ -39,7 +39,7 @@ img {
 
 @font-face {
   font-family: "OpenSans";
-  src: local("OpenSans-Bold"), 
+  src: local("OpenSans-Bold"),
     url("../fonts/OpenSansSemiBold.woff2"), format("woff2"),
     url("../fonts/OpenSansSemiBold.woff"), format("woff");
   font-weight: 600;
@@ -211,7 +211,7 @@ body {
   margin-bottom: 20px;
 }
 
-.services-desc{
+.services-desc {
   text-align: center;
 }
 
@@ -304,7 +304,7 @@ body {
   object-fit: cover;
 }
 
-/* object-fit: cover - масштабирует изображениетак, чтобы оно 
+/* object-fit: cover - масштабирует изображениетак, чтобы оно
 полностью заполнило область контейнера, сохраняя исходные пропорции */
 
 .blog-preview-text {
@@ -378,7 +378,7 @@ body {
   font-weight: 600;
   font-size: 17px;
   line-height: 180%;
-  color: #1c1c1c; 
+  color: #1c1c1c;
 }
 
 .clients-post {
@@ -447,6 +447,105 @@ body {
   color: #787878;
 }
 
+/* join us */
+
+.join-us {
+  border-bottom: 1px solid #dadada
+}
+
+.join-us-title {
+  text-align: center;
+}
+
+.join-us-desc {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.form {
+  padding-left: 55px;
+  padding-right: 55px;
+}
+
+.form-input {
+  padding: 16px 28px;
+  width: 251px;
+  height: 60px;
+  border: 1px solid #dadada;
+  border-radius: 50px;
+}
+
+.form-input:nth-child(-n+2) {
+  margin-bottom: 19px;
+}
+
+.form-select {
+  width: 251px;
+  height: 60px;
+  padding: 16px 28px;
+  border: 1px solid #dadada;
+  border-radius: 50px;
+}
+
+.form-textarea {
+  padding: 16px 28px;
+  border: 1px solid #dadada;
+  border-radius: 20px;
+  resize: none;
+  width: 100%;
+  height: 100%;
+}
+
+.form-top {
+  justify-content: space-between;
+  margin-bottom: 19px;
+}
+
+.form-left {
+  width: 49%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.form-right {
+  width: 49%;
+}
+
+.form-bottom {
+  justify-content: flex-end;
+}
+
+.form-wrapper {
+  flex-direction: column;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.form-btn {
+  min-width: 230px;
+  height: 60px;
+  margin-bottom: 9px;
+  padding: 20px 0;
+  border-radius: 50px;
+}
+
+.form-check {
+  font-weight: 400;
+  font-size: 12px;
+  text-align: center;
+  color: #787878;
+}
+
+.form-check input {
+  margin-right: 8px;
+}
+
+.form-check a {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #3172b9;
+}
+
 /* footer */
 
 .footer {
@@ -486,6 +585,7 @@ body {
 .footer-nav {
   margin-right: 56px;
 }
+
 .social-link {
   width: 24px;
   height: 24px;
@@ -510,4 +610,3 @@ body {
 .social-link-mail {
   background-image: url("../img/footer-mail.svg");
 }
-
