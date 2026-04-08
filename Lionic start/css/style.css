@@ -110,12 +110,45 @@ body {
 }
 
 .header-link {
+  position: relative;
   font-weight: 600;
   font-size: 15px;
   color: #1c1c1c
 }
 
+.header-link:focus {
+  outline: 1px solid #71a7e2;
+  outline-offset: 3px;
+}
+
+.header-link:hover {
+  color: #71a7e2;
+}
+
+.header-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #3474ba;
+  opacity: 0;
+
+}
+
+.header-link:active {
+  color: #3172b9;
+  outline: none;
+}
+
+.header-link:active::after {
+  opacity: 1;
+}
+
 .btn {
+  position: relative;
+  outline: none;
   font-weight: 600;
   font-size: 15px;
   color: #fff;
@@ -123,6 +156,35 @@ body {
   border-radius: 3px;
   padding: 15px 35px;
   background-color: #3172b9;
+}
+
+.btn::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border-radius: inherit;
+  border: 1px solid #71a7e2;
+  outline: none;
+  opacity: 0;
+}
+
+.btn:focus::after {
+  opacity: 1;
+}
+
+.btn:hover {
+  background-color: #71a7e2;
+}
+
+.btn:active {
+  background:  #0e3b6c;
+}
+
+.btn:active::after {
+  opacity: 0;
 }
 
 .header-container {
@@ -224,11 +286,17 @@ body {
   border-radius: 5px;
 }
 
+.services-item:hover {
+  border-color: #3172b9;
+  background-color: #3172b9;
+}
+
 .services-item:not(:nth-child(4n)) {
   margin-right: 30px;
 }
 
 .services-item-icon {
+  fill: #3172b9;
   margin-bottom: 25px;
 }
 
@@ -241,6 +309,21 @@ body {
   text-align: center;
   color: #1c1c1c;
 }
+
+.services-item:hover .services-item-title {
+  color: #fff;
+}
+
+.services-item:hover .services-item-desc {
+  color: #fff;
+}
+
+.services-item:hover .services-item-icon path {
+  fill: #fff;
+}
+
+/* path - отвечает за графику, применяет стили именно к
+svg картинке */
 
 .services-item-desc {
   margin: 0;
@@ -324,6 +407,28 @@ body {
 .blog-preview-desc {
   margin: 0;
 }
+
+.blog-preview-link {
+  position: relative;
+  width: 100%;
+}
+
+.blog-preview-link:focus{
+  background-color: #71a7e2 ;
+}
+
+.blog-preview-link:focus :is(.blog-preview-time, .blog-preview-title, .blog-preview-desc) {
+  color: #fff;
+}
+
+.blog-preview-link:hover{
+  background-color: #3172b9 ;
+}
+
+.blog-preview-link:hover :is(.blog-preview-time, .blog-preview-title, .blog-preview-desc) {
+  color: #fff;
+}
+
 
 /* clients */
 
