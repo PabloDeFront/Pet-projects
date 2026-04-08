@@ -429,8 +429,17 @@ svg картинке */
   color: #fff;
 }
 
+.blog-preview-link:active {
+  background-color: #0e3b6c;
+}
+
+.blog-preview-link:active :is(.blog-preview-time, .blog-preview-title, .blog-preview-desc) {
+  color: #fff;
+}
+
 
 /* clients */
+
 
 .clients {
   border-bottom: 1px solid #dadada
@@ -546,10 +555,25 @@ svg картинке */
 }
 
 .contacts-item-link {
+  align-self: flex-start;
+  display: inline-block;
   font-weight: 400;
   font-size: 14px;
   line-height: 180%;
   color: #787878;
+}
+
+.contacts-item-link:focus {
+  outline: 1px solid #71a7e2;
+}
+
+.contacts-item-link:hover {
+  color: #71a7e2;
+}
+
+.contacts-item-link:active {
+  color: #0e3b6c;
+  outline: none;
 }
 
 /* join us */
@@ -584,12 +608,42 @@ svg картинке */
   margin-bottom: 19px;
 }
 
+.form-input:focus {
+  background-color:  rgba(113, 167, 226, 0.2);
+  outline: none;
+  border-color: #71a7e2
+}
+
+.form-input:hover {
+  border-color: #71a7e2
+}
+
+.form-input:active {
+  border-color: #0e3b6c;
+  background-color: #fff;
+}
+
 .form-select {
   width: 251px;
   height: 60px;
   padding: 16px 28px;
   border: 1px solid #dadada;
   border-radius: 50px;
+}
+
+.form-select:focus {
+  background-color:  rgba(113, 167, 226, 0.2);
+  outline: none;
+  border-color: #71a7e2
+}
+
+.form-select:hover {
+  border-color: #71a7e2
+}
+
+.form-select:active {
+  border-color: #0e3b6c;
+  background-color: #fff;
 }
 
 .form-textarea {
@@ -599,6 +653,21 @@ svg картинке */
   border: 1px solid #dadada;
   border-radius: 20px;
   resize: none;
+}
+
+.form-textarea:focus {
+  background-color:  rgba(113, 167, 226, 0.2);
+  outline: none;
+  border-color: #71a7e2
+}
+
+.form-textarea:hover {
+  border-color: #71a7e2
+}
+
+.form-textarea:active {
+  border-color: #0e3b6c;
+  background-color: #fff;
 }
 
 .form-top {
@@ -692,26 +761,48 @@ svg картинке */
 }
 
 .social-link {
+  display: flex;
   width: 24px;
   height: 24px;
-  display: block;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
+  align-items: center;
+  justify-content: center;
 }
 
 .social-item:not(:last-child) {
   margin-right: 32px;
 }
 
-.social-link-tw {
-  background-image: url("../img/footer-tw.svg");
+.social-link svg {
+  fill: #000;
 }
 
-.social-link-linkedin {
-  background-image: url("../img/footer-li.svg");
+.social-link-mail svg {
+  fill: transparent;
+  stroke: #000;
 }
 
-.social-link-mail {
-  background-image: url("../img/footer-mail.svg");
+/* stroke - так как у значка почты нет заливки, а есть цвет "костей",
+используем stroke */
+
+.social-link:focus {
+  outline-offset: 2px;
+  outline: 1px solid #71a7e2;
+}
+
+.social-link:hover svg {
+  fill: #71a7e2;
+}
+
+.social-link-mail:hover svg {
+  fill: transparent;
+  stroke: #71a7e2;
+}
+
+.social-link:active svg {
+  fill: #3172b9;
+}
+
+.social-link-mail:active svg {
+  fill: transparent;
+  stroke: #3172b9;
 }
