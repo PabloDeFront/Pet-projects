@@ -113,7 +113,9 @@ body {
   position: relative;
   font-weight: 600;
   font-size: 15px;
-  color: #1c1c1c
+  color: #1c1c1c;
+
+  transition: color 0.3s ease-in-out;
 }
 
 .header-link:focus {
@@ -129,12 +131,18 @@ body {
   content: "";
   position: absolute;
   left: 0;
-  bottom: 0;
-  width: 100%;
+  bottom: -5px;
+  width: 0px;
   height: 2px;
-  background-color: #3474ba;
-  opacity: 0;
+  border-radius: 25%;
+  background-color: #71a7e2;
+  opacity: 1;
 
+  transition: width .3s ease-in-out;
+}
+
+.header-link:hover::after {
+  width: 100%;
 }
 
 .header-link:active {
@@ -156,6 +164,8 @@ body {
   border-radius: 3px;
   padding: 15px 35px;
   background-color: #3172b9;
+
+  transition: background-color .3s ease-in-out;
 }
 
 .btn::after {
@@ -169,6 +179,8 @@ body {
   border: 1px solid #71a7e2;
   outline: none;
   opacity: 0;
+
+  transition: opacity .3s ease-in-out;
 }
 
 .btn:focus::after {
@@ -284,6 +296,8 @@ body {
   padding: 60px 30px;
   border: 1px solid #e4e4e4;
   border-radius: 5px;
+
+  transition: border-color .3s ease-in-out, background-color .3s ease-in-out;
 }
 
 .services-item:hover {
@@ -300,6 +314,10 @@ body {
   margin-bottom: 25px;
 }
 
+.services-item-icon path {
+  transition: fill .3s ease-in-out;
+}
+
 .services-item-title {
   margin: 0;
   margin-bottom: 15px;
@@ -308,6 +326,20 @@ body {
   line-height: 1.3;
   text-align: center;
   color: #1c1c1c;
+
+  transition: color .3s ease-in-out
+}
+
+.services-item-desc {
+  margin: 0;
+  text-align: center;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+  color: #787878;
+
+  transition: color .3s  ease-in-out
 }
 
 .services-item:hover .services-item-title {
@@ -325,15 +357,6 @@ body {
 /* path - отвечает за графику, применяет стили именно к
 svg картинке */
 
-.services-item-desc {
-  margin: 0;
-  text-align: center;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.5;
-  text-align: center;
-  color: #787878;
-}
 
 /* articles */
 .articles {
@@ -397,20 +420,39 @@ svg картинке */
 .blog-preview-time {
   display: block;
   margin-bottom: 5px;
+  font-size: 10px;
+  line-height: 150%;
+  color: #787878;
+
+  transition: color .3s ease-in-out;
 }
 
 .blog-preview-title {
   margin: 0;
   margin-bottom: 15px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 130%;
+  color: #1c1c1c;
+
+  transition: color .3s ease-in-out;
 }
 
 .blog-preview-desc {
   margin: 0;
+  max-width: 210px;
+  font-size: 14px;
+  line-height: 150%;
+  color: #787878;
+
+  transition: color .3s ease-in-out;
 }
 
 .blog-preview-link {
   position: relative;
   width: 100%;
+
+  transition: background-color .3s ease-in-out;
 }
 
 .blog-preview-link:focus{
@@ -561,6 +603,8 @@ svg картинке */
   font-size: 14px;
   line-height: 180%;
   color: #787878;
+
+  transition: color .3s ease-in-out;
 }
 
 .contacts-item-link:focus {
@@ -602,6 +646,8 @@ svg картинке */
   height: 60px;
   border: 1px solid #dadada;
   border-radius: 50px;
+
+  transition: background-color .3s ease-in-out, border-color .3s ease-in-out;
 }
 
 .form-input:nth-child(-n+2) {
@@ -629,6 +675,8 @@ svg картинке */
   padding: 16px 28px;
   border: 1px solid #dadada;
   border-radius: 50px;
+
+  transition: background-color .3s ease-in-out, border-color .3s ease-in-out;
 }
 
 .form-select:focus {
@@ -653,6 +701,8 @@ svg картинке */
   border: 1px solid #dadada;
   border-radius: 20px;
   resize: none;
+
+  transition: background-color .3s ease-in-out, border-color .3s ease-in-out;
 }
 
 .form-textarea:focus {
@@ -751,9 +801,49 @@ svg картинке */
 }
 
 .footer-link {
+  position: relative;
+  display: inline-block;
   font-weight: 600;
   font-size: 15px;
   color: #787878;
+
+  transition: color .3s ease-in-out;
+}
+
+.footer-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0px;
+  height: 2px;
+  border-radius: 25%;
+  background-color: #71a7e2;
+  opacity: 1;
+
+  transition: width .3s ease-in-out;
+}
+
+.footer-link:hover::after {
+  width: 100%;
+}
+
+.footer-link:focus {
+  outline: 1px solid #71a7e2;
+  outline-offset: 3px;
+}
+
+.footer-link:hover {
+  color: #71a7e2;
+}
+
+.footer-link:active {
+  color: #3172b9;
+  outline: none;
+}
+
+.footer-link:active::after {
+  opacity: 1;
 }
 
 .footer-nav {
@@ -774,11 +864,15 @@ svg картинке */
 
 .social-link svg {
   fill: #000;
+
+  transition: fill .3s ease-in-out;
 }
 
 .social-link-mail svg {
   fill: transparent;
   stroke: #000;
+
+  transition: stroke .3s ease-in-out;
 }
 
 /* stroke - так как у значка почты нет заливки, а есть цвет "костей",
