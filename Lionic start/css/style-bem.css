@@ -1,0 +1,1034 @@
+/* ============================================================
+   LIONIC — CSS переработанный под методологию БЭМ
+   ============================================================ */
+
+
+/* ============================================================
+   БАЗОВЫЕ СТИЛИ (не БЭМ — глобальный сброс)
+   ============================================================ */
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+/* ============================================================
+   ШРИФТЫ
+   ============================================================ */
+
+@font-face {
+  font-family: "OpenSans";
+  src: local("OpenSans-Regular"),
+    url("../fonts/OpenSansRegular.woff2") format("woff2"),
+    url("../fonts/OpenSansRegular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OpenSans";
+  src: local("OpenSans-Light"),
+    url("../fonts/OpenSansLight.woff2") format("woff2"),
+    url("../fonts/OpenSansLight.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OpenSans";
+  src: local("OpenSans-SemiBold"),
+    url("../fonts/OpenSansSemiBold.woff2") format("woff2"),
+    url("../fonts/OpenSansSemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  min-width: 1200px;
+  font-family: "OpenSans", sans-serif;
+  font-weight: 400;
+}
+
+
+/* ============================================================
+   УТИЛИТЫ (Utility Classes)
+   Не являются БЭМ-блоками — это вспомогательные глобальные классы.
+   В БЭМ их принято либо не использовать, либо выделять в отдельный слой.
+   Здесь оставлены для совместимости и удобства.
+   ============================================================ */
+
+/* Сброс стилей списка */
+.list-reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Сброс стилей кнопки */
+.btn-reset {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+/* Флекс-утилита */
+.flex {
+  display: flex;
+}
+
+/* Центрирующая обёртка */
+.container {
+  width: 1200px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+/* Общие отступы для секций */
+.section-offset {
+  padding-top: 87px;
+  padding-bottom: 160px;
+}
+
+/*
+  section__title / section__desc — общие стили заголовков и описаний секций.
+  Используются как МИКСЫ совместно с заголовками конкретных блоков:
+  например: class="section__title services__title"
+  Примечание: технически "section" не является БЭМ-блоком в этом проекте,
+  но такое именование — распространённая прагматичная практика.
+*/
+.section__title {
+  margin: 0;
+  margin-bottom: 40px;
+  font-weight: 300;
+  font-size: 36px;
+  line-height: 1.3;
+  color: #1c1c1c;
+}
+
+.section__desc {
+  margin: 0;
+  margin-bottom: 50px;
+  font-size: 16px;
+  color: #787878;
+}
+
+
+/* ============================================================
+   БЛОК: btn
+   Самостоятельный компонент — кнопка.
+   Модификаторы задают вариации: размер, форма.
+   ============================================================ */
+
+.btn {
+  position: relative;
+  outline: none;
+  font-weight: 600;
+  font-size: 15px;
+  color: #fff;
+  text-transform: uppercase;
+  border-radius: 3px;
+  padding: 15px 35px;
+  background-color: #3172b9;
+  transition: background-color .3s ease-in-out;
+}
+
+/* Псевдоэлемент для анимации фокуса */
+.btn::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border-radius: inherit;
+  border: 1px solid #71a7e2;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+}
+
+.btn:focus::after {
+  opacity: 1;
+}
+
+.btn:hover {
+  background-color: #71a7e2;
+}
+
+.btn:active {
+  background-color: #0e3b6c;
+}
+
+.btn:active::after {
+  opacity: 0;
+}
+
+/*
+  Модификатор: btn--hero
+  БЫЛО: .hero__btn { min-width, padding, margin }
+  hero__btn задавал вариацию кнопки (размер/отступы), а не её позицию —
+  это признак модификатора, а не элемента.
+  СТАЛО: модификатор блока btn.
+*/
+.btn--hero {
+  min-width: 250px;
+  margin-bottom: 14px;
+  padding: 20px 0;
+  text-align: center;
+}
+
+/*
+  Модификатор: btn--form
+  БЫЛО: .form-btn { border-radius: 50px, height: 60px }
+  Аналогично — это вариация кнопки.
+  СТАЛО: модификатор блока btn.
+*/
+.btn--form {
+  min-width: 230px;
+  height: 60px;
+  margin-bottom: 9px;
+  padding: 20px 0;
+  border-radius: 50px;
+}
+
+
+/* ============================================================
+   БЛОК: nav
+   Используется в header и footer (через микс и модификатор).
+   ============================================================ */
+
+.nav__list {
+  /* display: flex задаётся через утилиту .flex в HTML */
+}
+
+.nav__link {
+  position: relative;
+  font-weight: 600;
+  font-size: 15px;
+  color: #1c1c1c;
+  transition: color .3s ease-in-out;
+}
+
+.nav__link:focus {
+  outline: 1px solid #71a7e2;
+  outline-offset: 3px;
+}
+
+.nav__link:hover {
+  color: #71a7e2;
+}
+
+.nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  border-radius: 25%;
+  background-color: #71a7e2;
+  transition: width .3s ease-in-out;
+}
+
+.nav__link:hover::after {
+  width: 100%;
+}
+
+.nav__link:active {
+  color: #3172b9;
+  outline: none;
+}
+
+.nav__link:active::after {
+  opacity: 1;
+}
+
+/*
+  Модификатор блока: nav--footer
+  БЫЛО: .footer__nav .nav__link { font-size, color } — контекстный селектор.
+  Это нарушение изоляции: стили nav__link зависят от того, где находится nav.
+  СТАЛО: модификатор nav--footer, применяется в HTML:
+  <nav class="nav nav--footer footer__nav">
+  Теперь nav сам знает о своей вариации, не завися от родителя.
+*/
+.nav--footer .nav__link {
+  font-size: 12px;
+  color: #787878;
+}
+
+
+/* ============================================================
+   БЛОК: header
+   ============================================================ */
+
+.header {
+  padding: 36px 0;
+  border-bottom: 1px solid #c4c4c4;
+  background-color: #fff;
+}
+
+/* Элемент: обёртка с flex-выравниванием */
+.header__container {
+  align-items: center;
+}
+
+/* Элемент: логотип — отталкивает nav вправо через margin-right: auto */
+.header__logo {
+  margin-right: auto;
+}
+
+/* Элемент: позиционирует блок nav внутри header */
+.header__nav {
+  margin-right: 52px;
+}
+
+/* Отступы между пунктами nav в контексте header */
+.header__nav .nav__item:not(:last-child) {
+  margin-right: 52px;
+}
+
+
+/* ============================================================
+   БЛОК: hero
+   ============================================================ */
+
+.hero {
+  padding-top: 100px;
+  padding-bottom: 150px;
+  background-image: url('../img/hero-bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.hero__content {
+  max-width: 50%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero__title {
+  margin: 0;
+  margin-bottom: 25px;
+  font-weight: 300;
+  font-size: 40px;
+  line-height: 1.3;
+}
+
+.hero__desc {
+  margin: 0;
+  margin-bottom: 34px;
+  font-size: 16px;
+  line-height: 1.55;
+  color: #787878;
+}
+
+.hero__wrapper {
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero__secure {
+  font-size: 11px;
+  line-height: 1.55;
+  text-transform: uppercase;
+  color: #787878;
+  background-image: url(../img/secure.svg);
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 14px 17px;
+  padding-left: 27px;
+}
+
+
+/* ============================================================
+   БЛОК: services
+   Элементы с составными именами: services__item-icon, services__item-title,
+   services__item-desc. Составное имя (через один дефис) означает:
+   "icon внутри item, принадлежащего блоку services" — допустимо в БЭМ.
+   ============================================================ */
+
+.services {
+  border-bottom: 1px solid #dadada;
+}
+
+/* Элемент: заголовок секции — микс с section__title */
+.services__title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Элемент: описание секции — микс с section__desc */
+.services__desc {
+  text-align: center;
+}
+
+/* Элемент: карточка сервиса */
+.services__item {
+  width: 270px;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 30px;
+  border: 1px solid #e4e4e4;
+  border-radius: 5px;
+  transition: border-color .3s ease-in-out, background-color .3s ease-in-out;
+}
+
+.services__item:not(:nth-child(4n)) {
+  margin-right: 30px;
+}
+
+/* Состояние hover на карточке */
+.services__item:hover {
+  border-color: #3172b9;
+  background-color: #3172b9;
+}
+
+/* Элемент: иконка сервиса */
+.services__item-icon {
+  fill: #3172b9;
+  margin-bottom: 25px;
+}
+
+.services__item-icon path {
+  transition: fill .3s ease-in-out;
+}
+
+/* Элемент: заголовок сервиса */
+.services__item-title {
+  margin: 0;
+  margin-bottom: 15px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.3;
+  text-align: center;
+  color: #1c1c1c;
+  transition: color .3s ease-in-out;
+}
+
+/* Элемент: описание сервиса */
+.services__item-desc {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+  color: #787878;
+  transition: color .3s ease-in-out;
+}
+
+/* Изменение дочерних элементов при hover на родителе */
+.services__item:hover .services__item-title {
+  color: #fff;
+}
+
+.services__item:hover .services__item-desc {
+  color: #fff;
+}
+
+.services__item:hover .services__item-icon path {
+  fill: #fff;
+}
+
+
+/* ============================================================
+   БЛОК: articles
+   ============================================================ */
+
+.articles {
+  border-bottom: 1px solid #dadada;
+}
+
+.articles__title {
+  /* Базовые стили — от section__title (микс) */
+}
+
+.articles__list {
+  flex-wrap: wrap;
+}
+
+.articles__item {
+  width: 570px;
+  margin-bottom: 30px;
+}
+
+.articles__item:not(:nth-child(2n)) {
+  margin-right: 30px;
+}
+
+
+/* ============================================================
+   БЛОК: article-card
+   БЫЛО: blog__preview — ошибочное именование.
+   Блока "blog" не существует в проекте. Элемент не может принадлежать
+   несуществующему блоку. Правильно: выделить в самостоятельный блок.
+   СТАЛО: article-card — независимый, переиспользуемый блок-карточка статьи.
+   ============================================================ */
+
+.article-card {
+  overflow: hidden;
+  border: 1px solid #e4e4e4;
+  border-radius: 5px;
+}
+
+/* Элемент: ссылка-обёртка на всю карточку */
+.article-card__link {
+  position: relative;
+  width: 100%;
+  transition: background-color .3s ease-in-out;
+}
+
+/* Состояния ссылки */
+.article-card__link:focus {
+  background-color: #71a7e2;
+}
+
+.article-card__link:focus .article-card__time,
+.article-card__link:focus .article-card__title,
+.article-card__link:focus .article-card__desc {
+  color: #fff;
+}
+
+.article-card__link:hover {
+  background-color: #3172b9;
+}
+
+.article-card__link:hover .article-card__time,
+.article-card__link:hover .article-card__title,
+.article-card__link:hover .article-card__desc {
+  color: #fff;
+}
+
+.article-card__link:active {
+  background-color: #0e3b6c;
+}
+
+.article-card__link:active .article-card__time,
+.article-card__link:active .article-card__title,
+.article-card__link:active .article-card__desc {
+  color: #fff;
+}
+
+/* Элемент: изображение карточки */
+.article-card__image {
+  object-fit: cover;
+}
+
+/* Элемент: текстовая область карточки */
+.article-card__body {
+  padding: 30px;
+}
+
+/* Элемент: дата публикации */
+.article-card__time {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 10px;
+  line-height: 1.5;
+  color: #787878;
+  transition: color .3s ease-in-out;
+}
+
+/* Элемент: заголовок статьи */
+.article-card__title {
+  margin: 0;
+  margin-bottom: 15px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.3;
+  color: #1c1c1c;
+  transition: color .3s ease-in-out;
+}
+
+/* Элемент: краткое описание */
+.article-card__desc {
+  margin: 0;
+  max-width: 210px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #787878;
+  transition: color .3s ease-in-out;
+}
+
+
+/* ============================================================
+   БЛОК: clients
+   ============================================================ */
+
+.clients {
+  border-bottom: 1px solid #dadada;
+}
+
+.clients__list {
+  /* display: flex через утилиту .flex */
+}
+
+.clients__item {
+  flex-direction: column;
+  width: 370px;
+  padding: 50px 36px 30px;
+  border: 1px solid #e4e4e4;
+}
+
+.clients__item:not(:nth-child(3n)) {
+  margin-right: 30px;
+}
+
+/*
+  Элемент: отзыв клиента
+  БЫЛО: clients__item-desc (лишний "-item-" в составном имени)
+  СТАЛО: clients__desc — короче, не менее понятно
+*/
+.clients__desc {
+  margin: 0;
+  margin-bottom: 30px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #787878;
+}
+
+/* Элемент: блок с данными клиента */
+.clients__user {
+  margin-top: auto;
+  padding-top: 28px;
+  align-items: center;
+  border-top: 1px solid #dadada;
+}
+
+/* Элемент: обёртка аватара */
+.clients__avatar {
+  flex-shrink: 0;
+  width: 67px;
+  margin-right: 17px;
+}
+
+/*
+  Элемент: фото клиента
+  БЫЛО: стилизация через тег-селектор .clients__avatar img {}
+  Прямая стилизация тегов внутри БЭМ-блоков ненадёжна (зависит от структуры HTML).
+  СТАЛО: явный класс clients__photo
+*/
+.clients__photo {
+  width: 100%;
+  height: 100%;
+  border: 2px solid #317289;
+  border-radius: 100%;
+}
+
+/*
+  Элемент: обёртка для имени и должности
+  БЫЛО: clients__text (слишком общее название)
+  СТАЛО: clients__info (описывает содержимое)
+*/
+.clients__info {
+  /* контейнер для name и role */
+}
+
+/* Элемент: имя клиента */
+.clients__name {
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 1.8;
+  color: #1c1c1c;
+}
+
+/*
+  Элемент: должность/статус клиента
+  БЫЛО: clients__post (неоднозначно: "пост" = публикация или должность?)
+  СТАЛО: clients__role (семантически точнее)
+*/
+.clients__role {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #787878;
+}
+
+
+/* ============================================================
+   БЛОК: contacts
+   БЫЛО: contacts-address, contacts-list, contacts-item... (kebab-case)
+   СТАЛО: contacts__address, contacts__list, contacts__item... (БЭМ)
+   Модификаторы элемента: contacts__item--address / --call / --mail
+   ============================================================ */
+
+.contacts {
+  border-bottom: 1px solid #dadada;
+}
+
+/* Элемент: тег <address>, сброс курсива */
+.contacts__address {
+  font-style: normal;
+}
+
+.contacts__list {
+  /* display: flex через утилиту .flex */
+}
+
+/* Элемент: один контакт */
+.contacts__item {
+  flex-direction: column;
+  width: 370px;
+  background-position: left top;
+  background-repeat: no-repeat;
+  background-size: 29px 29px;
+  padding-top: 48px;
+}
+
+/*
+  Модификаторы элемента contacts__item:
+  БЫЛО: contacts-item-address, contacts-item-call, contacts-item-mail
+  СТАЛО: contacts__item--address, contacts__item--call, contacts__item--mail
+  Двойное тире "--" означает модификатор — вариацию элемента.
+*/
+.contacts__item--address {
+  background-image: url('../img/location.svg');
+}
+
+.contacts__item--call {
+  background-image: url('../img/phone.svg');
+}
+
+.contacts__item--mail {
+  background-image: url('../img/mail.svg');
+}
+
+.contacts__item:not(:nth-child(3n)) {
+  margin-right: 30px;
+}
+
+/*
+  Элемент: заголовок контакта ("Visit Us", "Call Us", "Email Us")
+  БЫЛО: contacts-item-caption
+  СТАЛО: contacts__caption (caption — принадлежит блоку, а не item)
+*/
+.contacts__caption {
+  margin-bottom: 30px;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 1.8;
+  color: #1c1c1c;
+}
+
+/* Элемент: текстовое описание (адрес) */
+.contacts__text {
+  margin: 0;
+  max-width: 215px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #787878;
+}
+
+/* Элемент: ссылка (телефон или email) */
+.contacts__link {
+  align-self: flex-start;
+  display: inline-block;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #787878;
+  transition: color .3s ease-in-out;
+}
+
+.contacts__link:focus {
+  outline: 1px solid #71a7e2;
+}
+
+.contacts__link:hover {
+  color: #71a7e2;
+}
+
+.contacts__link:active {
+  color: #0e3b6c;
+  outline: none;
+}
+
+
+/* ============================================================
+   БЛОК: join-us
+   БЫЛО: join-us-title, join-us-desc (kebab)
+   СТАЛО: join-us__title, join-us__desc (БЭМ)
+   ============================================================ */
+
+.join-us {
+  border-bottom: 1px solid #dadada;
+}
+
+.join-us__title {
+  text-align: center;
+}
+
+.join-us__desc {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+
+/* ============================================================
+   БЛОК: form
+   БЫЛО: form-input, form-select, form-top... (kebab-case)
+   СТАЛО: form__input, form__select, form__top... (БЭМ)
+   ============================================================ */
+
+.form {
+  padding-left: 55px;
+  padding-right: 55px;
+}
+
+/* Элемент: верхняя часть формы (инпуты + textarea) */
+.form__top {
+  margin-bottom: 19px;
+  justify-content: space-between;
+}
+
+/* Элемент: левая колонка (инпуты) */
+.form__left {
+  width: 49%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* Элемент: правая колонка (textarea) */
+.form__right {
+  width: 49%;
+}
+
+/* Элемент: нижняя часть (кнопка + чекбокс) */
+.form__bottom {
+  justify-content: flex-end;
+}
+
+/* Элемент: обёртка для кнопки и чекбокса */
+.form__wrapper {
+  flex-direction: column;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+/* Элемент: текстовое поле */
+.form__input {
+  padding: 16px 28px;
+  width: 251px;
+  height: 60px;
+  border: 1px solid #dadada;
+  border-radius: 50px;
+  transition: background-color .3s ease-in-out, border-color .3s ease-in-out;
+}
+
+/* Отступы для первых двух инпутов */
+.form__input:nth-child(-n+2) {
+  margin-bottom: 19px;
+}
+
+.form__input:focus {
+  background-color: rgba(113, 167, 226, 0.2);
+  outline: none;
+  border-color: #71a7e2;
+}
+
+.form__input:hover {
+  border-color: #71a7e2;
+}
+
+.form__input:active {
+  border-color: #0e3b6c;
+  background-color: #fff;
+}
+
+/* Элемент: выпадающий список */
+.form__select {
+  width: 251px;
+  height: 60px;
+  padding: 16px 28px;
+  border: 1px solid #dadada;
+  border-radius: 50px;
+  transition: background-color .3s ease-in-out, border-color .3s ease-in-out;
+}
+
+.form__select:focus {
+  background-color: rgba(113, 167, 226, 0.2);
+  outline: none;
+  border-color: #71a7e2;
+}
+
+.form__select:hover {
+  border-color: #71a7e2;
+}
+
+.form__select:active {
+  border-color: #0e3b6c;
+  background-color: #fff;
+}
+
+/* Элемент: многострочное поле */
+.form__textarea {
+  width: 100%;
+  height: 100%;
+  padding: 16px 28px;
+  border: 1px solid #dadada;
+  border-radius: 20px;
+  resize: none;
+  transition: background-color .3s ease-in-out, border-color .3s ease-in-out;
+}
+
+.form__textarea:focus {
+  background-color: rgba(113, 167, 226, 0.2);
+  outline: none;
+  border-color: #71a7e2;
+}
+
+.form__textarea:hover {
+  border-color: #71a7e2;
+}
+
+.form__textarea:active {
+  border-color: #0e3b6c;
+  background-color: #fff;
+}
+
+/* Элемент: лейбл с чекбоксом */
+.form__check {
+  font-size: 12px;
+  text-align: center;
+  color: #787878;
+}
+
+.form__check input {
+  margin-right: 8px;
+}
+
+/*
+  Элемент: ссылка в тексте чекбокса
+  БЫЛО: .form-check a {} — стилизация через тег-селектор
+  СТАЛО: .form__check-link — явный класс
+*/
+.form__check-link {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #3172b9;
+}
+
+
+/* ============================================================
+   БЛОК: footer
+   ============================================================ */
+
+.footer {
+  padding: 42px 0;
+}
+
+.footer__container {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer__left,
+.footer__right {
+  align-items: center;
+}
+
+.footer__logo {
+  margin-right: 25px;
+}
+
+/* Элемент: позиционирует nav внутри footer */
+.footer__nav {
+  margin-right: 56px;
+}
+
+/* Отступы между пунктами nav в контексте footer */
+.footer__nav .nav__item:not(:last-child) {
+  margin-right: 28px;
+}
+
+/*
+  Элемент: копирайт
+  БЫЛО: в HTML class="footer__copy", в CSS .footer-copy {} — РАЗНЫЕ классы!
+  Стили никогда не применялись (баг). Теперь оба используют footer__copy.
+*/
+.footer__copy {
+  font-size: 12px;
+  color: #787878;
+}
+
+/*
+  УДАЛЕНО: .footer-link, .footer-link::after и т.д.
+  Этот класс был определён в CSS, но НЕ использовался ни в одном месте HTML.
+  "Мёртвый" код (dead code) — удалён.
+*/
+
+
+/* ============================================================
+   БЛОК: social
+   БЫЛО: social-item, social-link, social-link-tw... (kebab-case)
+   СТАЛО: social__item, social__link, social__link--twitter... (БЭМ)
+   Модификаторы: --twitter, --linkedin, --mail
+   ============================================================ */
+
+.social__item:not(:last-child) {
+  margin-right: 32px;
+}
+
+/* Элемент: ссылка-иконка */
+.social__link {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  align-items: center;
+  justify-content: center;
+}
+
+.social__link svg {
+  fill: #000;
+  transition: fill .3s ease-in-out;
+}
+
+/*
+  Модификатор: social__link--mail
+  У иконки письма нет заливки fill — используется stroke.
+  Модификатор задаёт нужный stroke вместо fill.
+*/
+.social__link--mail svg {
+  fill: transparent;
+  stroke: #000;
+  transition: stroke .3s ease-in-out;
+}
+
+.social__link:focus {
+  outline: 1px solid #71a7e2;
+  outline-offset: 2px;
+}
+
+.social__link:hover svg {
+  fill: #71a7e2;
+}
+
+.social__link--mail:hover svg {
+  fill: transparent;
+  stroke: #71a7e2;
+}
+
+.social__link:active svg {
+  fill: #3172b9;
+}
+
+.social__link--mail:active svg {
+  fill: transparent;
+  stroke: #3172b9;
+}

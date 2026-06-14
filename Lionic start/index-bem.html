@@ -10,51 +10,53 @@
 </head>
 
 <body>
+
+  <!-- =============================
+       БЛОК: header
+       МИКС: header__container + container + flex
+       ============================= -->
   <header class="header" id="home">
     <div class="container flex header__container">
       <a href="#" class="header__logo">
         <img src="img/logo.svg" alt="Logo">
       </a>
-      <nav class="header__nav nav" title="Главное меню">
+
+      <!-- МИКС: nav (блок) + header__nav (элемент, управляет позицией) -->
+      <nav class="nav header__nav" title="Главное меню">
         <ul class="nav__list list-reset flex">
           <li class="nav__item">
-            <a href="#" class="nav__link">
-              Home
-            </a>
+            <a href="#" class="nav__link">Home</a>
           </li>
           <li class="nav__item">
-            <a href="#services" class="nav__link">
-              Services
-            </a>
+            <a href="#services" class="nav__link">Services</a>
           </li>
           <li class="nav__item">
-            <a href="#articles" class="nav__link">
-              Articles
-            </a>
+            <a href="#articles" class="nav__link">Articles</a>
           </li>
           <li class="nav__item">
-            <a href="#clients" class="nav__link">
-              Clients
-            </a>
+            <a href="#clients" class="nav__link">Clients</a>
           </li>
           <li class="nav__item">
-            <a href="#contacts" class="nav__link">
-              Contacts
-            </a>
+            <a href="#contacts" class="nav__link">Contacts</a>
           </li>
           <li class="nav__item">
-            <a href="#join-us" class="nav__link">
-              Join us
-            </a>
+            <a href="#join-us" class="nav__link">Join us</a>
           </li>
         </ul>
       </nav>
+
+      <!-- btn — блок, btn-reset — утилита сброса -->
       <button class="btn header__btn btn-reset">
         Free trial
       </button>
     </div>
   </header>
+
   <main class="main">
+
+    <!-- =============================
+         БЛОК: hero
+         ============================= -->
     <section class="hero">
       <div class="container">
         <div class="hero__content flex">
@@ -66,6 +68,11 @@
             tincidunt ut&nbsp;laoreet dolore.
           </p>
           <div class="hero__wrapper flex">
+            <!--
+              БЫЛО: class="btn hero__btn btn-reset"
+              hero__btn задавал min-width, padding и margin — это
+              вариация кнопки, а не позиция. Правильно: модификатор btn--hero.
+            -->
             <button class="btn btn--hero btn-reset">
               FREE 30&nbsp;DAY TRIAL
             </button>
@@ -76,8 +83,17 @@
         </div>
       </div>
     </section>
+
+    <!-- =============================
+         БЛОК: services
+         .services__item-icon / title / desc — составные имена элементов
+         (item-icon читается как "icon внутри item", оба принадлежат блоку services)
+         ============================= -->
     <section id="services" class="services section-offset">
       <div class="container">
+        <!--
+          МИКС: section__title (общие стили заголовков) + services__title (text-align)
+        -->
         <h2 class="section__title services__title">
           Services
         </h2>
@@ -99,6 +115,7 @@
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
             </p>
           </li>
+
           <li class="services__item flex">
             <svg class="services__item-icon" width="86" height="64" viewBox="0 0 86 64" fill="none"
               xmlns="http://www.w3.org/2000/svg">
@@ -113,6 +130,7 @@
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
             </p>
           </li>
+
           <li class="services__item flex">
             <svg class="services__item-icon" width="64" height="64" viewBox="0 0 64 64" fill="none"
               xmlns="http://www.w3.org/2000/svg">
@@ -127,6 +145,7 @@
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
             </p>
           </li>
+
           <li class="services__item flex">
             <svg class="services__item-icon" width="65" height="65" viewBox="0 0 65 65" fill="none"
               xmlns="http://www.w3.org/2000/svg">
@@ -144,14 +163,25 @@
         </ul>
       </div>
     </section>
+
+    <!-- =============================
+         БЛОК: articles
+         БЛОК: article-card (был blog__preview — ошибочное именование,
+         т.к. блока "blog" нет в проекте)
+         ============================= -->
     <section id="articles" class="articles section-offset">
       <div class="container">
         <h2 class="section__title articles__title">
           Articles
         </h2>
-        <ul class="list-reset articles__list flex">
+        <ul class="articles__list list-reset flex">
           <li class="articles__item">
-            <article class="article-card flex">
+            <!--
+              article-card — самостоятельный блок-карточка.
+              Раньше назывался blog__preview, что неверно:
+              элемент не может принадлежать блоку, которого нет на странице.
+            -->
+            <article class="article-card">
               <a href="#" class="article-card__link flex">
                 <img src="img/blog-1.jpg" alt="Blog photo 1" class="article-card__image">
                 <div class="article-card__body">
@@ -168,12 +198,13 @@
               </a>
             </article>
           </li>
+
           <li class="articles__item">
-            <article class="article-card flex">
-              <a href="" class="article-card flex">
+            <article class="article-card">
+              <a href="#" class="article-card__link flex">
                 <img src="img/blog-2.jpg" alt="Blog photo 2" class="article-card__image">
                 <div class="article-card__body">
-                  <time datetime="2021-11-15 19:30" class="article-card__time">
+                  <time datetime="2021-11-28 19:30" class="article-card__time">
                     28 Nov 2021
                   </time>
                   <h3 class="article-card__title">
@@ -186,12 +217,13 @@
               </a>
             </article>
           </li>
+
           <li class="articles__item">
-            <article class="article-card flex">
-              <a href="" class="article-card__link flex">
+            <article class="article-card">
+              <a href="#" class="article-card__link flex">
                 <img src="img/blog-3.jpg" alt="Blog photo 3" class="article-card__image">
                 <div class="article-card__body">
-                  <time datetime="2021-11-15 19:30" class="article-card__time">
+                  <time datetime="2021-11-29 19:30" class="article-card__time">
                     29 Nov 2021
                   </time>
                   <h3 class="article-card__title">
@@ -204,12 +236,13 @@
               </a>
             </article>
           </li>
+
           <li class="articles__item">
-            <article class="article-card flex">
-              <a href="" class="article-card__link flex">
+            <article class="article-card">
+              <a href="#" class="article-card__link flex">
                 <img src="img/blog-4.jpg" alt="Blog photo 4" class="article-card__image">
                 <div class="article-card__body">
-                  <time datetime="2021-11-15 19:30" class="article-card__time">
+                  <time datetime="2021-12-11 19:30" class="article-card__time">
                     11 Dec 2021
                   </time>
                   <h3 class="article-card__title">
@@ -225,45 +258,63 @@
         </ul>
       </div>
     </section>
+
+    <!-- =============================
+         БЛОК: clients
+         ============================= -->
     <section id="clients" class="clients section-offset">
       <div class="container">
         <h2 class="section__title clients__title">
           Clients
         </h2>
-        <ul class="clients__list list-reset  flex">
-          <li class="clients-item flex">
-            <p class="clients-item__desc">
+        <ul class="clients__list list-reset flex">
+          <li class="clients__item flex">
+            <!--
+              БЫЛО: clients__item-desc → clients__desc (убрали лишнее "item-")
+            -->
+            <p class="clients__desc">
               Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel
               illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui
               blandit odio dignissim qui blandit molestie consequat.
             </p>
+            <!--
+              БЫЛО: clients__user + clients__text (text — слишком общее)
+              СТАЛО: clients__user + clients__info (описывает содержимое)
+            -->
             <div class="clients__user flex">
               <div class="clients__avatar">
-                <img src="img/client-1.jpg" alt="John Armstrong">
+                <!--
+                  БЫЛО: img без класса, стилизовался через "clients__avatar img"
+                  СТАЛО: clients__photo — явный класс, более надёжно
+                -->
+                <img src="img/client-1.jpg" alt="John Armstrong" class="clients__photo">
               </div>
               <div class="clients__info">
-
                 <div class="clients__name">
                   John Armstrong
                 </div>
+                <!--
+                  БЫЛО: clients__post (неоднозначно: публикация или должность?)
+                  СТАЛО: clients__role (семантически точнее)
+                -->
                 <span class="clients__role">
                   Customer
                 </span>
               </div>
             </div>
           </li>
+
           <li class="clients__item flex">
-            <p class="clients-item__desc">
+            <p class="clients__desc">
               Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel
               illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui
               blandit odio dignissim qui blandit molestie consequat.
             </p>
             <div class="clients__user flex">
               <div class="clients__avatar">
-                <img src="img/client-2.jpg" alt="Elizabeth Martin">
+                <img src="img/client-2.jpg" alt="Elizabeth Martin" class="clients__photo">
               </div>
               <div class="clients__info">
-
                 <div class="clients__name">
                   Elizabeth Martin
                 </div>
@@ -273,18 +324,18 @@
               </div>
             </div>
           </li>
+
           <li class="clients__item flex">
-            <p class="clients-item__desc">
+            <p class="clients__desc">
               Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel
               illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui
               blandit odio dignissim qui blandit molestie consequat.
             </p>
             <div class="clients__user flex">
               <div class="clients__avatar">
-                <img src="img/client-3.jpg" alt="Robin Soutby">
+                <img src="img/client-3.jpg" alt="Robin Soutby" class="clients__photo">
               </div>
               <div class="clients__info">
-
                 <div class="clients__name">
                   Robin Soutby
                 </div>
@@ -295,52 +346,79 @@
             </div>
           </li>
         </ul>
-
       </div>
     </section>
+
+    <!-- =============================
+         БЛОК: contacts
+         БЫЛО: contacts-item, contacts-list (kebab, непоследовательно)
+         СТАЛО: contacts__item, contacts__list (БЭМ)
+         Модификаторы: contacts__item--address / --call / --mail
+         ============================= -->
     <section id="contacts" class="contacts section-offset">
       <div class="container">
+        <!--
+          БЫЛО: class="section-title contacts-title" (с дефисом — другой класс!)
+          СТАЛО: class="section__title contacts__title" (БЭМ, единообразно)
+          В оригинале этот заголовок не получал стили section__title — это был баг.
+        -->
         <h2 class="section__title contacts__title">
           Contacts
         </h2>
         <address class="contacts__address">
           <ul class="contacts__list list-reset flex">
-            <li class="contacts__item contacts-item--address flex">
-              <strong class="contacts-item__caption">Visit Us</strong>
-              <p class="contacts-item__text">
+
+            <li class="contacts__item contacts__item--address flex">
+              <strong class="contacts__caption">Visit Us</strong>
+              <p class="contacts__text">
                 Duis autem vel eum iriure dolor in&nbsp;hendrerit in&nbsp;vulputate velit.
               </p>
             </li>
-            <li class="contacts__item contacts-item--call flex ">
-              <strong class="contacts-item__caption">Call Us</strong>
-              <a href="tel:+79876543210" class="contacts-item__link">
+
+            <li class="contacts__item contacts__item--call flex">
+              <strong class="contacts__caption">Call Us</strong>
+              <a href="tel:+79876543210" class="contacts__link">
                 +7 (987) 654-32-10
               </a>
-              <a href="tel:+71234567890" class="contacts-item__link">
-                +7 (123) 456-78-90
+              <a href="tel:+71234567890" class="contacts__link">
+                +7 (123) 456-78-90
               </a>
-              <!-- если номер в ссылке то нужна приписка tel: -->
-
             </li>
-            <li class="contacts__item flex contacts-item--mail">
-              <strong class="contacts-item__caption">Email Us</strong>
-              <a href="mailto:example@example.com" class="contacts-item__link">
+
+            <li class="contacts__item contacts__item--mail flex">
+              <strong class="contacts__caption">Email Us</strong>
+              <a href="mailto:example@example.com" class="contacts__link">
                 example@example.com
               </a>
-              <a href="mailto:support@example.com" class="contacts-item__link">
+              <a href="mailto:support@example.com" class="contacts__link">
                 support@example.com
               </a>
-              <!-- если почта в ссылке то нужна приписка mailto: -->
             </li>
+
           </ul>
         </address>
       </div>
-
     </section>
+
+    <!-- =============================
+         БЛОК: join-us
+         БЫЛО: join-us-title, join-us-desc (kebab)
+         СТАЛО: join-us__title, join-us__desc (БЭМ)
+         ============================= -->
     <section class="join-us section-offset" id="join-us">
       <div class="container">
+        <!--
+          БЫЛО: class="section-title join-us-title" — баг, section-title ≠ section__title
+          СТАЛО: section__title join-us__title
+        -->
         <h2 class="section__title join-us__title">Join us</h2>
         <p class="section__desc join-us__desc">Take control of your paid subscriptions today!</p>
+
+        <!-- =============================
+             БЛОК: form
+             БЫЛО: form-input, form-select, form-top... (дефис)
+             СТАЛО: form__input, form__select, form__top... (БЭМ)
+             ============================= -->
         <form action="https://jsonplaceholder.typicode.com/posts" method="post" class="form">
           <div class="form__top flex">
             <div class="form__left flex">
@@ -361,11 +439,21 @@
               <textarea class="form__textarea" name="comment" placeholder="Comment"></textarea>
             </div>
           </div>
+
           <div class="form__bottom flex">
             <div class="form__wrapper flex">
+              <!--
+                БЫЛО: class="btn btn-reset form-btn"
+                form-btn задавал border-radius и height — это вариация кнопки.
+                СТАЛО: btn--form — модификатор блока btn
+              -->
               <button class="btn btn--form btn-reset">Get Started</button>
               <label class="form__check">
                 <input type="checkbox" required>
+                <!--
+                  БЫЛО: <a href="#"> без класса, стилизовался через .form-check a {}
+                  СТАЛО: явный класс form__check-link — надёжнее и семантичнее
+                -->
                 I agree with the <a href="#" class="form__check-link">user agreement</a>
               </label>
             </div>
@@ -373,19 +461,35 @@
         </form>
       </div>
     </section>
+
   </main>
+
+  <!-- =============================
+       БЛОК: footer
+       ============================= -->
   <footer class="footer">
     <div class="container flex footer__container">
       <div class="footer__left flex">
         <a href="#" class="footer__logo">
           <img src="img/logo.svg" alt="Logo">
         </a>
+        <!--
+          БЫЛО: class="footer__copy" в HTML, но в CSS был .footer-copy (с дефисом)
+          Это баг — стили никогда не применялись к этому элементу!
+          СТАЛО: footer__copy и в HTML, и в CSS
+        -->
         <small class="footer__copy">
           Copyright ©2017. All Right Reserved
         </small>
       </div>
+
       <div class="footer__right flex">
-        <nav class="nav--footer footer__nav nav">
+        <!--
+          МИКС: nav (блок) + nav--footer (модификатор) + footer__nav (элемент)
+          nav--footer меняет стили ссылок через модификатор блока,
+          вместо контекстного селектора .footer__nav .nav__link
+        -->
+        <nav class="nav nav--footer footer__nav">
           <ul class="nav__list list-reset flex">
             <li class="nav__item">
               <a href="#" target="_blank" class="nav__link">About Us</a>
@@ -401,8 +505,15 @@
             </li>
           </ul>
         </nav>
+
+        <!--
+          БЛОК: social
+          БЫЛО: social-item, social-link, social-link-tw... (kebab)
+          СТАЛО: social__item, social__link, social__link--twitter... (БЭМ)
+        -->
         <ul class="social list-reset flex">
-          <li class="social__item"><a href="#" class="social__link social-link--twitter">
+          <li class="social__item">
+            <a href="#" class="social__link social__link--twitter">
               <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_32_164)">
                   <path
@@ -414,8 +525,10 @@
                   </clipPath>
                 </defs>
               </svg>
-            </a></li>
-          <li class="social__item"><a href="#" class="social__link social__link--linkedin">
+            </a>
+          </li>
+          <li class="social__item">
+            <a href="#" class="social__link social__link--linkedin">
               <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_32_166)">
                   <path
@@ -427,8 +540,10 @@
                   </clipPath>
                 </defs>
               </svg>
-            </a></li>
-          <li class="social__item"><a href="#" class="social__link social__link--mail">
+            </a>
+          </li>
+          <li class="social__item">
+            <a href="#" class="social__link social__link--mail">
               <svg width="24" height="18" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M2.40039 0.5H21.5996C22.6744 0.5 23.5 1.31855 23.5 2.25V15.75C23.5 16.6814 22.6744 17.5 21.5996 17.5H2.40039C1.32565 17.5 0.5 16.6814 0.5 15.75V2.25C0.5 1.31855 1.32565 0.5 2.40039 0.5Z"
@@ -436,11 +551,12 @@
                 <path d="M22.8478 1.0625L12 9.93794L1.15222 1.0625" stroke-linecap="round"
                   stroke-linejoin="round" />
               </svg>
-            </a></li>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
   </footer>
-</body>
 
+</body>
 </html>
